@@ -1,0 +1,31 @@
+/* Media Queries Mixin */
+
+@mixin breakpoints($media) {
+  @if $media == break-tiny {
+    @media only screen and (max-width: $s0) { @content; }
+  }
+  @else if $media == break-xx-small {
+    @media only screen and (min-width: $s0) and (max-width: $s480) { @content; }
+  }
+  @else if $media == break-x-small {
+    @media only screen and (max-width: $s640) { @content; }
+  }
+  @else if $media == break-x-medium {
+    @media only screen and (max-width: $s768) { @content; }
+  }
+  @else if $media == break-medium {
+    @media only screen and (max-width: $s960) { @content; }
+  }
+  @else if $media == break-xx-large {
+    @media only screen and (max-width: $s1024) { @content; }
+  }
+  @else if $media == break-x-large {
+    @media only screen and (max-width: $s1280) { @content; }
+  }
+  @else if $media == break-large {
+    @media only screen and (max-width: $s1440) { @content; }
+  }
+  @else if $media == break-huge {
+    @media only screen and (max-width: $s1440) { @content; }
+  }
+}
