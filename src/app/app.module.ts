@@ -8,13 +8,15 @@ import { BookComponent } from './components/book/book.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MainComponent } from './components/feature/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
