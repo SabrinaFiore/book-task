@@ -1,8 +1,9 @@
 import { Book } from './../../model/book';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-const apiUrl = 'http://localhost:3000/bookss';
+const apiUrl = 'http://localhost:3000/books';
 
 @Component({
   selector: 'app-book',
@@ -23,6 +24,13 @@ export class BookComponent implements OnInit {
       },
       err => this.error = err
     );
+  }
+
+  add(form: NgForm) {
+    this.http.post<Book>(`${apiUrl}`, form.value)
+      .subscribe((res: Book) => {
+        this.books.push(res);
+      });
   }
 
   delete(book: Book) {

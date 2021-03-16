@@ -11,17 +11,35 @@
           *ngFor="let book of books">
           {{ book.title }} - {{ book.author}}
           <div class="pull-right">
-            € {{ book.price | number: '1.2-2' }}
+            <span [style.color]="book.price > 15 ? 'red': null "> € {{ book.price | number: '1.2-2' }} </span>
             <i class="fa fa-trash"
               (click)="delete(book)"></i>
           </div>
         </li>
       </ul>
     </div>
+    <div class="col-lg-6 col-md-12 mx-0">
+      <form class="form-group" #f="ngForm" (submit)="add(f)">
+        <div class="mb-3">
+          <input [ngModel] type="text" class="form-control" name="title" placeholder="Insert title...">
+        </div>
+        <div class="mb-3">
+          <input [ngModel] type="text" class="form-control" name="author" placeholder="Insert author...">
+        </div>
+        <div class="mb-3">
+          <input [ngModel] type="number" class="form-control" name="price" placeholder="Insert price...">
+        </div>
+        <div class="mb-3">
+          <input [ngModel] type="text" class="form-control" name="isbn" placeholder="Insert isbn...">
+        </div>
+        <div class="mb-3">
+          <textarea [ngModel] class="form-control" rows="3" name="description" plaseholder="Insert description..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-warning btn-sm mr-1">Add</button>
+      </form>
+    </div>
   </div>
 </div>
-
-<!-- <app-main></app-main> -->
 
 <!-- Footer -->
 <app-footer></app-footer>

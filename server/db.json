@@ -15,6 +15,14 @@
       "price": 11,
       "isbn": "978-81-7525-766-5",
       "description": "Gli arancni di Montalbano"
+    },
+    {
+      "title": "Su con la vita, Charlie Brown",
+      "author": "Abraham J. Twerski",
+      "price": 12,
+      "isbn": "978-81-7525-766-5",
+      "description": "Abraham J. Twerski",
+      "id": 4
     }
   ]
 }

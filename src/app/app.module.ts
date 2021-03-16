@@ -8,7 +8,7 @@ import { BookComponent } from './components/book/book.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MainComponent } from './components/feature/main/main.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +16,13 @@ import { MainComponent } from './components/feature/main/main.component';
     BookComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
