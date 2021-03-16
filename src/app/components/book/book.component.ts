@@ -43,14 +43,15 @@ export class BookComponent implements OnInit {
   }
 
   edit(form: NgForm) {
-    this.http.put<Book>(`${apiUrl}/${this.active.id}`, form.value)
+    this.http.patch<Book>(`${apiUrl}/${this.active.id}`, form.value)
       .subscribe(res => {
         const index = this.books.indexOf(this.active);
         this.books[index] = res
       })
   }
 
-  delete(book: Book) {
+  delete(event, book: Book) {
+    event.stopPropagation();
     this.http.delete<Book>(`${apiUrl}/${book.id}`)
       .subscribe(() => {
         const index = this.books.indexOf(book);

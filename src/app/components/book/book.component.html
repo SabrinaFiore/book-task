@@ -17,7 +17,7 @@
           <div class="pull-right">
             <span [style.color]="book.price > 15 ? 'red': null "> € {{ book.price | number: '1.2-2' }} </span>
             <i class="fa fa-trash"
-              (click)="delete(book)"
+              (click)="delete($event, book)"
             ></i>
           </div>
         </li>
