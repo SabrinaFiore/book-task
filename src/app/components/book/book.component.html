@@ -5,37 +5,43 @@
   <div class="alert alert-danger"
     *ngIf="error">Error</div>
   <div class="row">
+    <!-- <pre>{{ active | json }}</pre> -->
     <div class="col-lg-6 col-md-12 mx-0">
       <ul class="list-group">
         <li class="list-group-item"
-          *ngFor="let book of books">
-          {{ book.title }} - {{ book.author}}
+          *ngFor="let book of books"
+          [ngClass]="{ 'active': book.id == active?.id }"
+          (click)="setActive(book)"
+          >
+          {{ book.title }} - {{ book.author }}
           <div class="pull-right">
             <span [style.color]="book.price > 15 ? 'red': null "> € {{ book.price | number: '1.2-2' }} </span>
             <i class="fa fa-trash"
-              (click)="delete(book)"></i>
+              (click)="delete(book)"
+            ></i>
           </div>
         </li>
       </ul>
     </div>
     <div class="col-lg-6 col-md-12 mx-0">
-      <form class="form-group" #f="ngForm" (submit)="add(f)">
+      <form class="form-group" #f="ngForm" (submit)="save(f)">
         <div class="mb-3">
-          <input [ngModel] type="text" class="form-control" name="title" placeholder="Insert title...">
+          <input [ngModel]="active?.title" type="text" class="form-control" name="title" placeholder="Insert title...">
         </div>
         <div class="mb-3">
-          <input [ngModel] type="text" class="form-control" name="author" placeholder="Insert author...">
+          <input [ngModel]="active?.author" type="text" class="form-control" name="author" placeholder="Insert author...">
         </div>
         <div class="mb-3">
-          <input [ngModel] type="number" class="form-control" name="price" placeholder="Insert price...">
+          <input [ngModel]="active?.price" type="number" class="form-control" name="price" placeholder="Insert price...">
         </div>
         <div class="mb-3">
-          <input [ngModel] type="text" class="form-control" name="isbn" placeholder="Insert isbn...">
+          <input [ngModel]="active?.isbn" type="text" class="form-control" name="isbn" placeholder="Insert isbn...">
         </div>
         <div class="mb-3">
-          <textarea [ngModel] class="form-control" rows="3" name="description" plaseholder="Insert description..."></textarea>
+          <textarea [ngModel]="active?.description" class="form-control" rows="3" name="description" plaseholder="Insert description..."></textarea>
         </div>
-        <button type="submit" class="btn btn-outline-warning btn-sm mr-1">Add</button>
+        <button type="submit" class="btn btn-outline-warning btn-sm mr-1">{{ active ? 'EDIT' : 'ADD'}}</button>
+        <button type="button" class="btn btn-outline-success btn-sm mr-1" (click)="reset()">Reset</button>
       </form>
     </div>
   </div>
