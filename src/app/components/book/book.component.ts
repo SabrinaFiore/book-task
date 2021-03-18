@@ -2,6 +2,7 @@ import { Book } from './../../model/book';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { formatCurrency } from '@angular/common';
 
 const apiUrl = 'http://localhost:3000/books';
 
@@ -15,6 +16,7 @@ export class BookComponent implements OnInit {
   books: Book[];
   error: any;
   active: Book;
+  imageSrc: string;
 
   constructor(private http: HttpClient) { }
 
@@ -65,8 +67,21 @@ export class BookComponent implements OnInit {
     this.active = book;
   }
 
-  reset() {
+  reset(form: NgForm) {
     this.active = null;
+    this.imageSrc = null;
+    form.reset();
+  }
+
+  readUrl(event: any) {
+    const reader = new FileReader();
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+      }
+    }
   }
 
   ngOnInit(): void {

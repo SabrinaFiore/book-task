@@ -4,17 +4,25 @@
 <div class="container">
   <div class="alert alert-danger"
     *ngIf="error">Error</div>
-  <div class="row">
+  <div class="row book">
     <!-- <pre>{{ active | json }}</pre> -->
     <div class="col-lg-6 col-md-12 mx-0">
       <ul class="list-group">
-        <li class="list-group-item"
+        <li class="list-group-item book-list--item"
           *ngFor="let book of books"
           [ngClass]="{ 'active': book.id == active?.id }"
           (click)="setActive(book)"
           >
-          {{ book.title }} - {{ book.author }}
-          <div class="pull-right">
+          <img [src]="book.img ? book.img : '../../assets/img/no-image.jpg'"  class="img-thumbnail" width="80">
+          <div class="book-list--description">
+            <div class="book-list--title">
+              {{ book.title }}
+            </div>
+            <div class="book-list--author">
+              - {{ book.author }}
+            </div>
+          </div>
+          <div class="pull-right book-list--price">
             <span [style.color]="book.price > 15 ? 'red': null "> € {{ book.price | number: '1.2-2' }} </span>
             <i class="fa fa-trash"
               (click)="delete($event, book)"
@@ -40,8 +48,18 @@
         <div class="mb-3">
           <textarea [ngModel]="active?.description" class="form-control" rows="3" name="description" plaseholder="Insert description..."></textarea>
         </div>
+        <div class="form-group">
+          <input style="display: none;" type="file" class="form-control" name="img" (change)="readUrl($event)" #selectedFile>
+        </div>
+        <div class="mb-3">
+          <img *ngIf="this.imageSrc" [src]="this.imageSrc" height="110" class="img-thumbnail">
+          <button type="button" class="btn btn-outline-warning btn-small btn-select" (click)="selectedFile.click()">
+            SELECT IMAGE
+          </button>
+        </div>
+        <input *ngIf="this.imageSrc" [ngModel]="this.imageSrc" type="hidden" name="img">
         <button type="submit" class="btn btn-outline-warning btn-sm mr-1">{{ active ? 'EDIT' : 'ADD'}}</button>
-        <button type="button" class="btn btn-outline-success btn-sm mr-1" (click)="reset()">Reset</button>
+        <button type="button" class="btn btn-outline-success btn-sm mr-1" (click)="reset(f)">Reset</button>
       </form>
     </div>
   </div>

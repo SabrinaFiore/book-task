@@ -8,6 +8,10 @@
   margin-bottom: 50px;
   position: relative;
 
+  &--heading-content {
+    text-align: center;
+  }
+
   &--overlay {
     background-color: #212529;
     left: 0;
@@ -30,6 +34,7 @@
 
   &--subheading {
     font-family: $typography-primary-regular;
-    font-size: $unit-spacing-2;
+    font-size: $unit-spacing;
+    font-style: italic;
   }
 }

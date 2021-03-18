@@ -1,1 +1,27 @@
 /* Book */
+
+.book {
+  margin: $unit-spacing 0 $unit-spacing*2;
+
+  &-list {
+    &--item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--description {
+      flex: 1;
+      padding-left: $unit-spacing--1;
+    }
+
+    &--title {
+      font-weight: 600;
+    }
+
+    &--price {
+      align-items: center;
+    }
+  }
+}
+

@@ -6,8 +6,11 @@
   color: $c-dark-gray;
   font-size: $unit-spacing;
   padding: $unit-spacing--1 0;
-  position: fixed;
   left: 0;
   text-align: center;
   width: 100%;
+
+  &-row--center {
+    justify-content: center;
+  }
 }
