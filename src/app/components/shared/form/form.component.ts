@@ -1,3 +1,4 @@
+import { BookService } from './../../../service/book-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -15,7 +16,8 @@ export class FormComponent implements OnInit {
   @Input() books: Book[];
   imageSrc: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private BookService: BookService) { }
 
   save(form: NgForm) {
     if(this.active) {
