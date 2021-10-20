@@ -1,0 +1,26 @@
+<div>
+    <!-- [formGroup]="loginForm" -->
+    <form >
+        <label for="username">Username</label>
+        <input 
+            type="text" 
+            formControlName="username" #usernameRef 
+        />
+        <!-- [ngModel]="usernameRef" -->
+        <div *ngIf="submitted">Username is required</div>
+        <label for="password">Password</label>
+        <input 
+            type="password" 
+            formControlName="password" 
+            #pswRef 
+        />
+        <!-- [ngModel]="pswRef" -->
+        <div *ngIf="submitted">Password is required</div>
+        <button 
+            [disabled]="validate" 
+            (click)="onSubmit(usernameRef, pswRef, item)"
+            (loadLogin)="onSubmit(usernameRef, pswRef, item)"
+            id="login-button"
+        >Submit</button>
+    </form>
+</div> 

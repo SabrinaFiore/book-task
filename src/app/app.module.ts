@@ -8,8 +8,9 @@ import { BookComponent } from './components/book/book.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './components/shared/form/form.component';
+import { DrivenComponent } from './components/driven/driven.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,16 @@ import { FormComponent } from './components/shared/form/form.component';
     HeaderComponent,
     FooterComponent,
     FormComponent,
+    DrivenComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserModule /* or CommonModule */, 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
