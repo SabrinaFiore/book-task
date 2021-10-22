@@ -4,7 +4,9 @@
             type="text" 
             placeholder="Add user.."
             #inputRef>
-        <button (click)="add(inputRef)" class="btn btn-warning">Add User</button>        
+        <button (click)="add(inputRef)" class="btn btn-warning">
+            {{ user ?  "EDIT" : "ADD"}}
+        </button>        
     </div>
 </div>
 <div class="container p-3">
@@ -12,22 +14,29 @@
         <form #f="ngForm" (ngSubmit)="addUser(f)">
             <input 
                 type="text" 
-                placeholder="Add other user" 
+                placeholder="Add user" 
                 name="name" 
                 required 
-                [ngModel]="name">
+                [ngModel]="user?.name">
             <input 
                 type="text" 
-                placeholder="Add other user" 
+                placeholder="Add age" 
                 name="age" 
                 required 
-                [ngModel]="age">
+                [ngModel]="user?.age">
+            <input 
+                type="text" 
+                placeholder="Add city" 
+                name="city" 
+                required 
+                [ngModel]="user?.city">
             <button
                 type="submit" 
                 class="btn btn-primary"
             >Add</button>
         </form>
-        <li *ngFor="let user of users">{{ user.name }} -  {{ user.age }}</li>
+        <li *ngFor="let user of users"
+        (click)="setActive(user)">{{ user.name }} -  {{ user.age }} - {{ user.city }} </li>
         <!-- <small *ngIf="label.length < 3 "> To short</small>
         <p>{{ label }}</p> -->
     </div>
